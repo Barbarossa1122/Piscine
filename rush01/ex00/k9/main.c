@@ -11,59 +11,56 @@
 /* ************************************************************************** */
 
 #include "functions.h"
-//int k = 4;
-//CONTROLLA CHE IL NUMERO CI SIA E NON SI RIPETA
-int	check_double(int tab[k][k], int pos, int num)
+
+int	check_double(int tab[K][K], int pos, int num)
 {
 	int	i;
 
 	i = -1;
-	while (++i < pos / k)
-		if (tab[i][pos % k] == num)
+	while (++i < pos / K)
+		if (tab[i][pos % K] == num)
 			return (1);
 	i = -1;
-	while (++i < pos % k)
-		if (tab[pos / k][i] == num)
+	while (++i < pos % K)
+		if (tab[pos / K][i] == num)
 			return (1);
 	return (0);
 }
 
-//LOOP PRINCIPALE CHE RISOLVE E RIEMPIE LE CASELLE
-int	solve(int tab[k][k], int entry[(k*k)], int pos)
+int	solve(int tab[K][K], int entry[(K*K)], int pos)
 {
 	int	size;
 
-	if (pos == (k * k))
+	if (pos == (K * K))
 		return (1);
 	size = 0;
-	while (++size <= k)
+	while (++size <= K)
 	{
 		if (check_double(tab, pos, size) == 0)
 		{
-			tab[pos / k][pos % k] = size;
+			tab[pos / K][pos % K] = size;
 			if (check_case(tab, pos, entry) == 0)
 			{
 				if (solve(tab, entry, pos + 1) == 1)
 					return (1);
 			}
 			else
-				tab[pos / k][pos % k] = 0;
+				tab[pos / K][pos % K] = 0;
 		}
 	}
 	return (0);
 }
 
-//STAMPA LE SOLUZIONI NEL TERMINALE
-void	display_solution(int tab[k][k])
+void	display_solution(int tab[K][K])
 {
 	int	i;
 	int	j;
 
 	i = -1;
-	while (++i < k)
+	while (++i < K)
 	{
 		j = -1;
-		while (++j < k)
+		while (++j < K)
 		{
 			ft_putnbr(tab[i][j]);
 			ft_putchar(' ');

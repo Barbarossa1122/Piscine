@@ -12,20 +12,17 @@
 
 #include <unistd.h>
 
-//STAMPA UN CARATTERE
 void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
 
-//STAMPA UNA STRINGA
 void	ft_putstr(char *str)
 {
 	while (*str)
 		write(1, str++, 1);
 }
 
-//CALCOLO LUNGHEZZA STRINGA
 int	ft_strlen(char *str)
 {
 	int	i;
@@ -36,7 +33,6 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-//CONVERSIONE CHAR TO INT (ATOI)
 int	ft_atoi(char *str)
 {
 	int	i;
@@ -58,7 +54,6 @@ int	ft_atoi(char *str)
 	return (nbr);
 }
 
-//STAMPA UN NUMERO NEL TERMINALE
 void	ft_putnbr(int nb)
 {
 	unsigned int	nbr;

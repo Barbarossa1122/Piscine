@@ -13,26 +13,23 @@
 #include "functions.h"
 #include <stdlib.h>
 
-//int	k = 4;
 
-//CONTROLLO VALIDITA' DELLA STRINGA ATTRAVERSO IL NUMERO DEI CARATTERI
 int	check(int ac, char **av)
 {
 	if (ac != 2)
 		return (1);
-	if (ft_strlen(av[1]) != ((k * k * 2) - 1))
+	if (ft_strlen(av[1]) != ((K * K * 2) - 1))
 		return (1);
 	return (0);
 }
 
-//CONVERTE I NUMERI DELLA STRINGA DA CHAR A INT USANDO ATOI
 int	*get_numbers(char *str)
 {
 	int	i;
 	int	j;
 	int	*tab;
 
-	tab = malloc(sizeof(int) * (k * k));
+	tab = malloc(sizeof(int) * (K * K));
 	if (!(tab))
 		return (0);
 	i = -1;

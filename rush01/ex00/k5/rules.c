@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "functions.h"
-//int	k = 4;
-//CONTROLLI VALORI PER OGNI PROSPETTIVA 
-int	check_col_up(int tab[k][k], int pos, int entry[(k*k)])
+int	check_col_up(int tab[K][K], int pos, int entry[(K*K)])
 {
 	int	i;
 	int	max;
@@ -21,75 +19,75 @@ int	check_col_up(int tab[k][k], int pos, int entry[(k*k)])
 	i = 0;
 	max = 0;
 	count = 0;
-	if (pos / k == k - 1)
+	if (pos / K == K - 1)
 	{
-		while (i < k)
+		while (i < K)
 		{
-			if (tab[i][pos % k] > max)
+			if (tab[i][pos % K] > max)
 			{
-				max = tab[i][pos % k];
+				max = tab[i][pos % K];
 				count++;
 			}
 			i++;
 		}
-		if (entry[pos % k] != count)
+		if (entry[pos % K] != count)
 			return (1);
 	}
 	return (0);
 }
 
-int	check_row_right(int tab[k][k], int pos, int entry[(k*k)])
+int	check_row_right(int tab[K][K], int pos, int entry[(K*K)])
 {
 	int	i;
 	int	max_size;
 	int	visible_towers;
 
-	i = k;
+	i = K;
 	max_size = 0;
 	visible_towers = 0;
-	if (pos % k == k - 1)
+	if (pos % K == K - 1)
 	{
 		while (--i >= 0)
 		{
-			if (tab[pos / k][i] > max_size)
+			if (tab[pos / K][i] > max_size)
 			{
-				max_size = tab[pos / k][i];
+				max_size = tab[pos / K][i];
 				visible_towers++;
 			}
 		}
-		if (entry[(k * 3) + pos / k] != visible_towers)
+		if (entry[(K * 3) + pos / K] != visible_towers)
 			return (1);
 	}
 	return (0);
 }
 
-int	check_col_down(int tab[k][k], int pos, int entry[(k*k)])
+int	check_col_down(int tab[K][K], int pos, int entry[(K*K)])
 {
 	int	i;
 	int	max;
 	int	count;
 
-	i = k - 1;
+	i = K - 1;
 	max = 0;
 	count = 0;
-	if (pos / k == (k - 1))
+	if (pos / K == (K - 1))
 	{
 		while (i >= 0)
 		{
-			if (tab[i][pos % k] > max)
+			if (tab[i][pos % K] > max)
 			{
-				max = tab[i][pos % k];
+				max = tab[i][pos % K];
 				count++;
 			}
 			i--;
 		}
-		if (entry[k + pos % k] != count)
+		if (entry[K + pos % K] != count)
 			return (1);
 	}
 	return (0);
 }
 
-int	check_row_left(int tab[k][k], int pos, int entry[(k*k)])
+int	check_row_left(int tab[K][K], int pos, int entry[(K*K)])
 {
 	int	i;
 	int	max;
@@ -98,26 +96,25 @@ int	check_row_left(int tab[k][k], int pos, int entry[(k*k)])
 	i = 0;
 	max = 0;
 	count = 0;
-	if (pos % k == k - 1)
+	if (pos % K == K - 1)
 	{
-		while (i < k)
+		while (i < K)
 		{
-			if (tab[pos / k][i] > max)
+			if (tab[pos / K][i] > max)
 			{
-				max = tab[pos / k][i];
+				max = tab[pos / K][i];
 				count++;
 			}
 			i++;
 		}
-		if (entry[(k * 2) + pos / k] != count)
+		if (entry[(K * 2) + pos / K] != count)
 			return (1);
 	}
 	return (0);
 }
 
-// LA FUNZIONE RAGGRUPPA I CONTROLLI DELLE VARIE PROSPETTIVE
 
-int	check_case(int tab[k][k], int pos, int entry[(k*k)])
+int	check_case(int tab[K][K], int pos, int entry[(K*K)])
 {
 	if (check_row_left(tab, pos, entry) == 1)
 		return (1);
